@@ -1,4 +1,3 @@
-import { isALocalImage } from "app/Scenes/Artwork/Components/ImageCarousel/ImageCarousel"
 import React from "react"
 import {
   Image,
@@ -112,7 +111,7 @@ export default class OpaqueImageView extends React.Component<Props, State> {
     const { imageURL, useRawURL } = this.props
 
     if (imageURL) {
-      if (isALocalImage(imageURL)) {
+      if (true) {
         // we will always useRawURL for local images
         if (imageURL.startsWith("file://")) {
           return imageURL
