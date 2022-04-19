@@ -1,3 +1,4 @@
+
 import React from "react"
 import { GraphQLTaggedNode } from "relay-runtime"
 
@@ -34,4 +35,5 @@ function defineModules<T extends string>(obj: Record<T, ModuleDescriptor>) {
 
 export type AppModule = keyof typeof modules
 
-export const modules = defineModules({})
+export const modules = defineModules({
+})
