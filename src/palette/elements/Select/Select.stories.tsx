@@ -21,7 +21,7 @@ const options = [
 storiesOf("Select", module)
   .addDecorator(withTheme)
   .addDecorator(withScreenDimensions)
-  .add("Variants", () => (
+  .add("Dropdown", () => (
     <List>
       <Select
         title="Title"

@@ -4,7 +4,7 @@ import React from "react"
 import { ScrollView } from "react-native"
 import { ArtsyKeyboardAvoidingView } from "./ArtsyKeyboardAvoidingView"
 
-storiesOf("ArtsyKeyboardAvoidingView", module).add("ArtsyKeyboardAvoidingView", () => (
+storiesOf("Misc", module).add("ArtsyKeyboardAvoidingView", () => (
   <ArtsyKeyboardAvoidingView>
     <Flex>
       <ScrollView>

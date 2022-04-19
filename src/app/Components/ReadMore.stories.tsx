@@ -4,10 +4,10 @@ import { withTheme, withTracking } from "storybook/decorators"
 import { List } from "storybook/helpers"
 import { ReadMore } from "./ReadMore"
 
-storiesOf("ReadMore", module)
+storiesOf("Misc", module)
   .addDecorator(withTheme)
   .addDecorator(withTracking)
-  .add("Misc", () => (
+  .add("ReadMore", () => (
     <List contentContainerStyle={{ alignItems: "flex-start" }}>
       <ReadMore maxChars={3} content="Small text." />
       <ReadMore maxChars={11} content="Small [text](/artist/andy-warhol)." />

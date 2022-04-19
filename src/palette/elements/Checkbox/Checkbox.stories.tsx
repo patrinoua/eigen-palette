@@ -5,9 +5,9 @@ import { withTheme } from "storybook/decorators"
 import { List } from "storybook/helpers"
 import { Checkbox } from "./Checkbox"
 
-storiesOf("Checkbox", module)
+storiesOf("Select", module)
   .addDecorator(withTheme)
-  .add("Variants", () => (
+  .add("Checkbox", () => (
     <List>
       <Checkbox />
       <Checkbox text="Checkbox" />

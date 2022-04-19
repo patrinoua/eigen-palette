@@ -11,10 +11,10 @@ export const withFilterProvider: DecoratorFunction<React.ReactNode> = (story) =>
   <ArtworkFiltersStoreProvider>{story()}</ArtworkFiltersStoreProvider>
 )
 
-storiesOf("ArtworkFilterHeader", module)
+storiesOf("Headers", module)
   .addDecorator(withHooks)
   .addDecorator(withFilterProvider)
-  .add("Regular", () => {
+  .add("Regular ArtworkFilterHeader", () => {
     const selectedFiltersCount = useSelectedFiltersCount()
     return (
       <Flex mt={100}>

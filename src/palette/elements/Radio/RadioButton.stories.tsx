@@ -4,9 +4,9 @@ import { withTheme } from "storybook/decorators"
 import { List } from "storybook/helpers"
 import { RadioButton } from "./RadioButton"
 
-storiesOf("RadioButton", module)
+storiesOf("Select", module)
   .addDecorator(withTheme)
-  .add("Variants", () => (
+  .add("RadioButton", () => (
     <List>
       <RadioButton />
       <RadioButton text="RadioButton" />
