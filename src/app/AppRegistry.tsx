@@ -8,118 +8,23 @@ import { AppRegistry, LogBox, Platform, View } from "react-native"
 import { GraphQLTaggedNode } from "relay-runtime"
 import { AppProviders } from "./AppProviders"
 import { ArtsyKeyboardAvoidingViewContext } from "./Components/ArtsyKeyboardAvoidingView"
-import { ArtsyReactWebViewPage, useWebViewCookies } from "./Components/ArtsyReactWebView"
+import { useWebViewCookies } from "./Components/ArtsyReactWebView"
 import { FadeIn } from "./Components/FadeIn"
 import { FPSCounter } from "./Components/FPSCounter"
-import { BidFlow } from "./Containers/BidFlow"
-import { InboxQueryRenderer, InboxScreenQuery } from "./Containers/Inbox"
 import { InquiryQueryRenderer } from "./Containers/Inquiry"
-import { RegistrationFlow } from "./Containers/RegistrationFlow"
-import { WorksForYouQueryRenderer, WorksForYouScreenQuery } from "./Containers/WorksForYou"
 import { useErrorReporting } from "./errorReporting/hooks"
-import { About } from "./Scenes/About/About"
-import { ArticlesScreen, ArticlesScreenQuery } from "./Scenes/Articles/Articles"
-import { ArtistQueryRenderer, ArtistScreenQuery } from "./Scenes/Artist/Artist"
-import { ArtistArticlesQueryRenderer } from "./Scenes/ArtistArticles/ArtistArticles"
-import { ArtistSeriesQueryRenderer } from "./Scenes/ArtistSeries/ArtistSeries"
-import { ArtistSeriesFullArtistSeriesListQueryRenderer } from "./Scenes/ArtistSeries/ArtistSeriesFullArtistSeriesList"
-import { ArtistShows2QueryRenderer } from "./Scenes/ArtistShows/ArtistShows2"
-import { ArtworkQueryRenderer, ArtworkScreenQuery } from "./Scenes/Artwork/Artwork"
-import { ArtworkAttributionClassFAQQueryRenderer } from "./Scenes/ArtworkAttributionClassFAQ"
-import { ArtworkMediumQueryRenderer } from "./Scenes/ArtworkMedium"
-import { AuctionResultQueryRenderer } from "./Scenes/AuctionResult/AuctionResult"
-import {
-  AuctionResultsForArtistsYouFollowQueryRenderer,
-  AuctionResultsForArtistsYouFollowScreenQuery,
-} from "./Scenes/AuctionResultsForArtistsYouFollow/AuctionResultsForArtistsYouFollow"
-import { BottomTabs } from "./Scenes/BottomTabs/BottomTabs"
+import { ArtworkQueryRenderer } from "./Scenes/Artwork/Artwork"
 import { BottomTabsNavigator } from "./Scenes/BottomTabs/BottomTabsNavigator"
 import { BottomTabOption, BottomTabType } from "./Scenes/BottomTabs/BottomTabType"
-import { CityView } from "./Scenes/City"
-import { CityBMWListQueryRenderer } from "./Scenes/City/CityBMWList"
-import { CityFairListQueryRenderer } from "./Scenes/City/CityFairList"
-import { CityPicker } from "./Scenes/City/CityPicker"
-import { CitySavedListQueryRenderer } from "./Scenes/City/CitySavedList"
-import { CitySectionListQueryRenderer } from "./Scenes/City/CitySectionList"
-import { CollectionQueryRenderer } from "./Scenes/Collection/Collection"
-import { CollectionFullFeaturedArtistListQueryRenderer } from "./Scenes/Collection/Components/FullFeaturedArtistList"
-import { FairQueryRenderer } from "./Scenes/Fair/Fair"
-import { FairAllFollowedArtistsQueryRenderer } from "./Scenes/Fair/FairAllFollowedArtists"
-import { FairArticlesQueryRenderer } from "./Scenes/Fair/FairArticles"
-import { FairBMWArtActivationQueryRenderer } from "./Scenes/Fair/FairBMWArtActivation"
-import { FairMoreInfoQueryRenderer } from "./Scenes/Fair/FairMoreInfo"
-import { Favorites } from "./Scenes/Favorites/Favorites"
-import { FeatureQueryRenderer } from "./Scenes/Feature/Feature"
+
 import { ForceUpdate } from "./Scenes/ForceUpdate/ForceUpdate"
-import { GeneQueryRenderer } from "./Scenes/Gene/Gene"
-import { HomeQueryRenderer } from "./Scenes/Home/Home"
-import { MakeOfferModalQueryRenderer } from "./Scenes/Inbox/Components/Conversations/MakeOfferModal"
 import { ConversationNavigator } from "./Scenes/Inbox/ConversationNavigator"
-import { ConversationDetailsQueryRenderer } from "./Scenes/Inbox/Screens/ConversationDetails"
-import {
-  LotsByArtistsYouFollowQueryRenderer,
-  LotsByArtistsYouFollowScreenQuery,
-} from "./Scenes/LotsByArtistsYouFollow/LotsByArtistsYouFollow"
-import { MapContainer } from "./Scenes/Map"
-import { NewMapScreen } from "./Scenes/Map/NewMap"
-import { MyAccountQueryRenderer } from "./Scenes/MyAccount/MyAccount"
-import { MyAccountEditEmailQueryRenderer } from "./Scenes/MyAccount/MyAccountEditEmail"
-import { MyAccountEditNameQueryRenderer } from "./Scenes/MyAccount/MyAccountEditName"
-import { MyAccountEditPassword } from "./Scenes/MyAccount/MyAccountEditPassword"
-import { MyAccountEditPhoneQueryRenderer } from "./Scenes/MyAccount/MyAccountEditPhone"
-import { MyBidsQueryRenderer } from "./Scenes/MyBids"
-import {
-  MyCollectionQueryRenderer,
-  MyCollectionScreenQuery,
-} from "./Scenes/MyCollection/MyCollection"
-import { ArtworkSubmissionStatusFAQ } from "./Scenes/MyCollection/Screens/Artwork/ArtworkSubmissionStatusFAQ"
-import { RequestForPriceEstimateScreen } from "./Scenes/MyCollection/Screens/Artwork/Components/ArtworkInsights/RequestForPriceEstimate/RequestForPriceEstimateScreen"
-import { MyCollectionArtworkQueryRenderer } from "./Scenes/MyCollection/Screens/Artwork/MyCollectionArtwork"
-import { MyCollectionSellingWithartsyFAQ } from "./Scenes/MyCollection/Screens/Artwork/MyCollectionSellingWithartsyFAQ"
-import { MyCollectionArtworkForm } from "./Scenes/MyCollection/Screens/ArtworkForm/MyCollectionArtworkForm"
-import { MyCollectionArtworkFullDetailsQueryRenderer } from "./Scenes/MyCollection/Screens/ArtworkFullDetails/MyCollectionArtworkFullDetails"
-import { DarkModeSettings } from "./Scenes/MyProfile/DarkModeSettings"
-import { MyProfile } from "./Scenes/MyProfile/MyProfile"
-import { MyProfileHeaderMyCollectionAndSavedWorksScreenQuery } from "./Scenes/MyProfile/MyProfileHeaderMyCollectionAndSavedWorks"
-import { MyProfilePaymentQueryRenderer } from "./Scenes/MyProfile/MyProfilePayment"
-import { MyProfilePaymentNewCreditCard } from "./Scenes/MyProfile/MyProfilePaymentNewCreditCard"
-import { MyProfilePushNotificationsQueryRenderer } from "./Scenes/MyProfile/MyProfilePushNotifications"
-import { MyProfileSettings } from "./Scenes/MyProfile/MyProfileSettings"
-import {
-  NewWorksForYouQueryRenderer,
-  NewWorksForYouScreenQuery,
-} from "./Scenes/NewWorksForYou/NewWorksForYou"
+
 import { Onboarding } from "./Scenes/Onboarding/Onboarding"
-import { OrderDetailsQueryRender } from "./Scenes/OrderHistory/OrderDetails/Components/OrderDetails"
-import { OrderHistoryQueryRender } from "./Scenes/OrderHistory/OrderHistory"
-import { PartnerQueryRenderer } from "./Scenes/Partner"
 import { PartnerLocationsQueryRenderer } from "./Scenes/Partner/Screens/PartnerLocations"
-import { PrivacyRequest } from "./Scenes/PrivacyRequest"
-import { SaleQueryRenderer, SaleScreenQuery } from "./Scenes/Sale"
-import { SaleFAQ } from "./Scenes/SaleFAQ/SaleFAQ"
-import { SaleInfoQueryRenderer } from "./Scenes/SaleInfo"
-import { SalesQueryRenderer, SalesScreenQuery } from "./Scenes/Sales"
-import { SavedAddressesQueryRenderer } from "./Scenes/SavedAddresses/SavedAddresses"
-import { SavedAddressesFormQueryRenderer } from "./Scenes/SavedAddresses/SavedAddressesForm"
-import { EditSavedSearchAlertQueryRenderer } from "./Scenes/SavedSearchAlert/EditSavedSearchAlert"
-import { SavedSearchAlertsListQueryRenderer } from "./Scenes/SavedSearchAlertsList/SavedSearchAlertsList"
-import { SearchScreen, SearchScreenQuery } from "./Scenes/Search/Search"
-import { SellWithArtsyHomeScreenQuery } from "./Scenes/SellWithArtsy/SellWithArtsyHome"
-import { SubmitArtwork } from "./Scenes/SellWithArtsy/SubmitArtwork/SubmitArtwork"
-import { SellWithArtsy } from "./Scenes/SellWithArtsy/SubmitArtwork/UploadPhotos/utils"
-import { ShowMoreInfoQueryRenderer, ShowQueryRenderer } from "./Scenes/Show"
-import { TagQueryRenderer } from "./Scenes/Tag/Tag"
-import { VanityURLEntityRenderer } from "./Scenes/VanityURL/VanityURLEntity"
-import { ViewingRoomQueryRenderer } from "./Scenes/ViewingRoom/ViewingRoom"
-import { ViewingRoomArtworkScreen } from "./Scenes/ViewingRoom/ViewingRoomArtwork"
-import { ViewingRoomArtworksQueryRenderer } from "./Scenes/ViewingRoom/ViewingRoomArtworks"
-import {
-  ViewingRoomsListScreen,
-  ViewingRoomsListScreenQuery,
-} from "./Scenes/ViewingRoom/ViewingRoomsList"
+
 import { GlobalStore, useDevToggle, useSelectedTab } from "./store/GlobalStore"
 import { propsStore } from "./store/PropsStore"
-import { AdminMenu } from "./utils/AdminMenu"
 import { useInitializeQueryPrefetching } from "./utils/queryPrefetching"
 import { addTrackingProvider, Schema, screenTrack } from "./utils/track"
 import { ConsoleTrackingProvider } from "./utils/track/ConsoleTrackingProvider"
@@ -314,135 +219,6 @@ export type AppModule = keyof typeof modules
 
 export const modules = defineModules({
   // Storybook: reactModule(StorybookUIRoot, { fullBleed: true, hidesBackButton: true }),
-  Admin: nativeModule({ alwaysPresentModally: true }),
-  Admin2: reactModule(AdminMenu, { alwaysPresentModally: true, hasOwnModalCloseButton: true }),
-  About: reactModule(About),
-  AddOrEditMyCollectionArtwork: reactModule(MyCollectionArtworkForm, { hidesBackButton: true }),
-  Articles: reactModule(ArticlesScreen, {}, [ArticlesScreenQuery]),
-  Artist: reactModule(ArtistQueryRenderer, { hidesBackButton: true }, [ArtistScreenQuery]),
-  ArtistShows: reactModule(ArtistShows2QueryRenderer),
-  ArtistArticles: reactModule(ArtistArticlesQueryRenderer),
-  ArtistSeries: reactModule(ArtistSeriesQueryRenderer),
-  Artwork: reactModule(Artwork, {}, [ArtworkScreenQuery]),
-  ArtworkMedium: reactModule(ArtworkMediumQueryRenderer),
-  ArtworkAttributionClassFAQ: reactModule(ArtworkAttributionClassFAQQueryRenderer),
-  ArtworkSubmissionStatusFAQ: reactModule(ArtworkSubmissionStatusFAQ),
-  Auction: reactModule(SaleQueryRenderer, { fullBleed: true }, [SaleScreenQuery]),
-  Auctions: reactModule(SalesQueryRenderer, {}, [SalesScreenQuery]),
-  AuctionInfo: reactModule(SaleInfoQueryRenderer),
-  AuctionFAQ: reactModule(SaleFAQ),
-  AuctionResult: reactModule(AuctionResultQueryRenderer),
-  AuctionResultsForArtistsYouFollow: reactModule(
-    AuctionResultsForArtistsYouFollowQueryRenderer,
-    {},
-    [AuctionResultsForArtistsYouFollowScreenQuery]
-  ),
-  AuctionRegistration: reactModule(RegistrationFlow, {
-    alwaysPresentModally: true,
-    hasOwnModalCloseButton: true,
-    fullBleed: true,
-  }),
-  AuctionBidArtwork: reactModule(BidFlow, {
-    alwaysPresentModally: true,
-    hasOwnModalCloseButton: true,
-    fullBleed: true,
-  }),
-  BottomTabs: reactModule(BottomTabs, { fullBleed: true }),
-  City: reactModule(CityView, { fullBleed: true }),
-  CityBMWList: reactModule(CityBMWListQueryRenderer, { fullBleed: true }),
-  CityFairList: reactModule(CityFairListQueryRenderer, { fullBleed: true }),
-  CityPicker: reactModule(CityPicker, { fullBleed: true }),
-  CitySavedList: reactModule(CitySavedListQueryRenderer),
-  CitySectionList: reactModule(CitySectionListQueryRenderer),
-  Collection: reactModule(CollectionQueryRenderer, { fullBleed: true }),
-  SubmitArtwork: reactModule(SubmitArtwork, { hidesBackButton: true }),
-  Conversation: reactModule(Conversation, { onlyShowInTabName: "inbox" }),
-  ConversationDetails: reactModule(ConversationDetailsQueryRenderer),
-  Fair: reactModule(FairQueryRenderer, { fullBleed: true }),
-  FairMoreInfo: reactModule(FairMoreInfoQueryRenderer),
-  FairArticles: reactModule(FairArticlesQueryRenderer),
-  FairAllFollowedArtists: reactModule(FairAllFollowedArtistsQueryRenderer),
-  FairBMWArtActivation: reactModule(FairBMWArtActivationQueryRenderer, { fullBleed: true }),
-  Favorites: reactModule(Favorites),
-  Feature: reactModule(FeatureQueryRenderer, { fullBleed: true }),
-  FullArtistSeriesList: reactModule(ArtistSeriesFullArtistSeriesListQueryRenderer),
-  FullFeaturedArtistList: reactModule(CollectionFullFeaturedArtistListQueryRenderer),
-  Gene: reactModule(GeneQueryRenderer),
-  Tag: reactModule(TagQueryRenderer),
-  Home: reactModule(HomeQueryRenderer, { isRootViewForTabName: "home" }),
-  Inbox: reactModule(InboxQueryRenderer, { isRootViewForTabName: "inbox" }, [InboxScreenQuery]),
-  Inquiry: reactModule(Inquiry, { alwaysPresentModally: true, hasOwnModalCloseButton: true }),
-  LiveAuction: nativeModule({
-    alwaysPresentModally: true,
-    hasOwnModalCloseButton: true,
-    modalPresentationStyle: "fullScreen",
-  }),
-  LocalDiscovery: nativeModule(),
-  ReactWebView: reactModule(ArtsyReactWebViewPage, {
-    fullBleed: true,
-    hasOwnModalCloseButton: true,
-    hidesBackButton: true,
-  }),
-  MakeOfferModal: reactModule(MakeOfferModalQueryRenderer, {
-    hasOwnModalCloseButton: true,
-  }),
-  Map: reactModule(MapContainer, { fullBleed: true }),
-  NewMap: reactModule(NewMapScreen, { fullBleed: true }),
-  MyAccount: reactModule(MyAccountQueryRenderer),
-  MyAccountEditEmail: reactModule(MyAccountEditEmailQueryRenderer, { hidesBackButton: true }),
-  MyAccountEditName: reactModule(MyAccountEditNameQueryRenderer, { hidesBackButton: true }),
-  MyAccountEditPassword: reactModule(MyAccountEditPassword, { hidesBackButton: true }),
-  MyAccountEditPhone: reactModule(MyAccountEditPhoneQueryRenderer, { hidesBackButton: true }),
-  MyBids: reactModule(MyBidsQueryRenderer),
-  MyCollection: reactModule(MyCollectionQueryRenderer),
-  MyCollectionArtwork: reactModule(MyCollectionArtworkQueryRenderer, { hidesBackButton: true }),
-  MyCollectionArtworkFullDetails: reactModule(MyCollectionArtworkFullDetailsQueryRenderer),
-  MyCollectionSellingWithartsyFAQ: reactModule(MyCollectionSellingWithartsyFAQ),
-  MyProfile: reactModule(
-    MyProfile,
-    {
-      isRootViewForTabName: "profile",
-    },
-    [MyProfileHeaderMyCollectionAndSavedWorksScreenQuery, MyCollectionScreenQuery]
-  ),
-  MyProfilePayment: reactModule(MyProfilePaymentQueryRenderer),
-  MyProfileSettings: reactModule(MyProfileSettings),
-  OrderHistory: reactModule(OrderHistoryQueryRender),
-  OrderDetails: reactModule(OrderDetailsQueryRender),
-  MyProfilePaymentNewCreditCard: reactModule(MyProfilePaymentNewCreditCard, {
-    hidesBackButton: true,
-  }),
-  MyProfilePushNotifications: reactModule(MyProfilePushNotificationsQueryRenderer),
-  DarkModeSettings: reactModule(DarkModeSettings),
-  MySellingProfile: reactModule(View),
-  Partner: reactModule(PartnerQueryRenderer),
-  PartnerLocations: reactModule(PartnerLocations),
-  PrivacyRequest: reactModule(PrivacyRequest),
-  RequestForPriceEstimateScreen: reactModule(RequestForPriceEstimateScreen),
-  Sales: reactModule(SellWithArtsy, { isRootViewForTabName: "sell" }, [
-    SellWithArtsyHomeScreenQuery,
-  ]),
-  SalesNotRootTabView: reactModule(SellWithArtsy),
-  Search: reactModule(SearchScreen, { isRootViewForTabName: "search" }, [SearchScreenQuery]),
-  Show: reactModule(ShowQueryRenderer, { fullBleed: true }),
-  ShowMoreInfo: reactModule(ShowMoreInfoQueryRenderer),
-  SavedAddresses: reactModule(SavedAddressesQueryRenderer),
-  SavedAddressesForm: reactModule(SavedAddressesFormQueryRenderer, {
-    alwaysPresentModally: true,
-    hasOwnModalCloseButton: false,
-  }),
-  VanityURLEntity: reactModule(VanityURLEntityRenderer, { fullBleed: true }),
-  ViewingRoom: reactModule(ViewingRoomQueryRenderer, { fullBleed: true }),
-  ViewingRoomArtwork: reactModule(ViewingRoomArtworkScreen),
-  ViewingRoomArtworks: reactModule(ViewingRoomArtworksQueryRenderer),
-  ViewingRooms: reactModule(ViewingRoomsListScreen, {}, [ViewingRoomsListScreenQuery]),
-  WorksForYou: reactModule(WorksForYouQueryRenderer, {}, [WorksForYouScreenQuery]),
-  NewWorksForYou: reactModule(NewWorksForYouQueryRenderer, {}, [NewWorksForYouScreenQuery]),
-  LotsByArtistsYouFollow: reactModule(LotsByArtistsYouFollowQueryRenderer, {}, [
-    LotsByArtistsYouFollowScreenQuery,
-  ]),
-  SavedSearchAlertsList: reactModule(SavedSearchAlertsListQueryRenderer),
-  EditSavedSearchAlert: reactModule(EditSavedSearchAlertQueryRenderer),
 })
 
 // Register react modules with the app registry
