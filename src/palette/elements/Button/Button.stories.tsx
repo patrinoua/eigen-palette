@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions"
 import { storiesOf } from "@storybook/react-native"
 import { Wrap } from "app/utils/Wrap"
-import { BellIcon, Box, Flex, LinkIcon, Spacer } from "palette"
+import { BellIcon, Box, Flex, LinkIcon, Spacer, Text } from "palette"
 import { useState } from "react"
 import { Button as RNButton } from "react-native"
 import { withHooks, withScreenDimensions, withTheme } from "storybook/decorators"
@@ -28,7 +28,7 @@ const states: Array<_test_DisplayState | undefined> = [
   _test_DisplayState.Pressed,
 ]
 
-storiesOf("Button", module)
+storiesOf("Buttons", module)
   .addDecorator(withTheme)
   .addDecorator(withScreenDimensions)
   .addDecorator(withHooks)
@@ -42,7 +42,7 @@ storiesOf("Button", module)
       )}
     />
   ))
-  .add("States", () => (
+  .add("By State", () => (
     <DataList
       data={states}
       renderItem={({ item: state }) => (
@@ -82,17 +82,21 @@ storiesOf("Button", module)
       )}
     />
   ))
-  .add("Variants (loading)", () => (
-    <DataList
+  .add("Loading", () => (
+    // by doing this we do not really take advantage of storybook
+    <DataList // as it becomes cryptic to see which usage brings what (and in this case we have many duplicates!)
       data={variants}
       renderItem={({ item: variant }) => (
-        <Button variant={variant} loading onPress={() => action(`tapped ${variant}`)}>
-          {variant}
-        </Button>
+        <Flex flexDirection="row" alignItems="center">
+          <Text mx={1}>{variant}</Text>
+          <Button variant={variant} loading onPress={() => action(`tapped ${variant}`)}>
+            {variant}
+          </Button>
+        </Flex>
       )}
     />
   ))
-  .add("Variants (disabled)", () => (
+  .add("Disabled", () => (
     <DataList
       data={variants}
       renderItem={({ item: variant }) => (
