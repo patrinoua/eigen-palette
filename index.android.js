@@ -14,14 +14,5 @@ if (__DEV__) {
 
 require("./src/app/errorReporting/sentrySetup").setupSentry({ environment: "bootstrap" })
 
-if (metaflags.startStorybook) {
-  global.__STORYBOOK__ = true
-  require("./src/storybook")
-} else {
-  require("react-native-gesture-handler")
-  require("react-native-screens").enableScreens()
-  require("./src/app/utils/PushNotification").configure()
-  const { AppRegistry } = require("react-native")
-  const { App } = require("./src/app/AndroidApp")
-  AppRegistry.registerComponent("Artsy", () => App)
-}
+require("./src/storybook")
+
