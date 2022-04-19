@@ -5,7 +5,7 @@ import { List } from "storybook/helpers"
 import { Text } from "../Text"
 import { VisualClueDot, VisualClueText } from "./"
 
-storiesOf("Theme/Text", module)
+storiesOf("Theme", module)
   .addDecorator(withTheme)
 
   .add("Visual Clue", () => (

@@ -8,9 +8,9 @@ import { LinkText, Text, TextProps } from "."
 
 const variants: Array<TextProps["variant"]> = ["xs", "sm", "md", "lg", "xl", "xxl"]
 
-storiesOf("Theme/Text", module)
+storiesOf("Theme", module)
   .addDecorator(withTheme)
-  .add("Variants", () => (
+  .add("Text Variants", () => (
     <DataList
       data={variants}
       renderItem={({ item: variant }) => (

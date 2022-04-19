@@ -21,24 +21,22 @@ const Wrapper: React.FC<WrapperProps> = ({ component: Component, tabs }) => {
   )
 }
 
-storiesOf("Navigational Tabs", module)
+storiesOf("Tabs..!", module)
   .addDecorator(withTheme)
-  .add("With 3 Tabs", () => {
+  .add("Navigational With 3 Tabs", () => {
     const tabs: TabsType = [{ label: "Artist" }, { label: "Artworks" }, { label: "Insights" }]
     return <Wrapper component={NavigationalTabs} tabs={tabs} />
   })
-  .add("With 2 Tabs", () => {
+  .add("Navigational With 2 Tabs", () => {
     const tabs: TabsType = [{ label: "Artist" }, { label: "Artworks" }]
     return <Wrapper tabs={tabs} component={NavigationalTabs} />
   })
-  .add("With superscript", () => {
+  .add("Navigational With superscript", () => {
     const tabs: TabsType = [{ label: "Artist" }, { label: "Artworks", superscript: "Beta" }]
     return <Wrapper tabs={tabs} component={NavigationalTabs} />
   })
-
-storiesOf("Content Tabs", module)
   .addDecorator(withTheme)
-  .add("ContentTabs", () => {
+  .add("Content Tabs", () => {
     const tabs: TabsType = [
       { label: "Artist" },
       { label: "Artworks" },
@@ -49,9 +47,6 @@ storiesOf("Content Tabs", module)
     ]
     return <Wrapper tabs={tabs} component={ContentTabs} />
   })
-
-storiesOf("Step Tabs", module)
-  .addDecorator(withTheme)
   .add("Step Tabs with step 1 completed", () => {
     const tabs: TabsType = [
       { label: "Step 1", completed: true },

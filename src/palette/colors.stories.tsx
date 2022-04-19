@@ -32,9 +32,9 @@ const ColorSquare = ({ color: theColor, bright }: { color: Color; bright?: boole
   )
 }
 
-storiesOf("Theme/Color", module)
+storiesOf("Theme", module)
   .addDecorator(withTheme)
-  .add("colors", () => (
+  .add("Colors", () => (
     <List>
       <Row>
         <ColorSquare color="black100" />

@@ -25,9 +25,9 @@ const SpaceLine = ({ space: theSpace }: { space: SpacingUnitV3 }) => {
   )
 }
 
-storiesOf("Theme/Space", module)
+storiesOf("Theme", module)
   .addDecorator(withTheme)
-  .add("spaces", () => (
+  .add("Spaces", () => (
     <List style={{ marginLeft: 50 }} contentContainerStyle={{ alignItems: "flex-start" }}>
       <SpaceLine space="0.5" />
       <SpaceLine space="1" />
