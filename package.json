@@ -10,7 +10,7 @@
   },
   "main": "index.ios.js",
   "scripts": {
-    "start": "STORYBOOK=0 yarn start-servers",
+    "start": "STORYBOOK=0 yarn start-servers"
   },
   "repository": {
     "type": "git",
