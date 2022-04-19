@@ -21,7 +21,7 @@ const Wrapper: React.FC<WrapperProps> = ({ component: Component, tabs }) => {
   )
 }
 
-storiesOf("Tabs..!", module)
+storiesOf("Tabs", module)
   .addDecorator(withTheme)
   .add("Navigational With 3 Tabs", () => {
     const tabs: TabsType = [{ label: "Artist" }, { label: "Artworks" }, { label: "Insights" }]

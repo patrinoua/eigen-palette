@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-set -euxo pipefail
-
-
-bundle exec fastlane update_version_string

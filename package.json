@@ -1,8 +1,8 @@
 {
-  "name": "eigen",
-  "version": "1.21.52",
-  "native-code-version": 44,
-  "description": "Artsy mobile app.",
+  "name": "@artsy/palette-mobile",
+  "version": "1.0.0",
+  "native-code-version": 1,
+  "description": "Artsy mobile palette.",
   "engines": {
     "node": "14.x",
     "npm": "6.1.x",
