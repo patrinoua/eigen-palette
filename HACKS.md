@@ -1,47 +1,3 @@
-<!-- Template
-
-## Title
-
-#### When can we remove this:
-
-Tell us when we can remove this hack.
-
-#### Explanation/Context:
-
-Explain why the hack was added.
-
--->
-
-👀 See comment on top of file for template.
-
-## "cheerio" resolution
-
-#### When can we remove this:
-
-Remove after `enzyme` is removed as a dependency.
-
-#### Explanation/Context:
-
-This is an existing resolution at the creation of HACKS.md. For what I gathered, it is required by enzyme. It requires ~1.0.0, but we need 0.22.0.
-
-We use it in `renderToString` which takes something like `<Image />` and gives us `<image />`. Using 0.22.0 that works, but when enzyme uses ~1.0.0 it gives `<img />`, which breaks tests.
-
-Using enzyme we created `renderUntil`. To replace that, we probably need @testing-library/react or something to replace it. Then we can remove enzyme and cheerio resolution as well.
-
-## EchoNew.json
-
-#### When can we remove this:
-
-Maybe sometime end of 2020, we can change the file EchoNew.json back to Echo.json.
-
-#### Explanation/Context:
-
-https://artsy.slack.com/archives/CDU4AH60Z/p1600737384008500?thread_ts=1600642583.000100&cid=CDU4AH60Z
-
-There was a case where echo returns 401 when a user asks for the latest echo options. This might be caused by some key misconfiguration, or it might not. Right now we have figured out that the app was storing broken Echo.json when the status was 401, and this caused the app to crash. As the simplest way to get around that we decided to rename the file, so in the next app update we would force all users to grab a new echo json file (this time named EchoNew.json). We have also added code to make sure we don't store broken echo json files locally anymore.
-
-After a few months we should be safe to return to the old name if we want. If we decide to do that, we should make sure to remove the old file that might have been sitting on users' phones.
-
 ## react-native-image-crop-picker getRootVC patch
 
 #### When can we remove this:
@@ -64,67 +20,6 @@ When this is merged: https://github.com/facebook/react-native/pull/30345.
 
 For some reason CircleCI kept giving an error when running tests `TypeError: stacktraceParser.parse is not a function`. Once I moved the require higher up, things started working again.
 
-# Mapbox patches:
-
-We have a few mapbox related hacks + patches. Grouping here for convenience.
-
-## hardcode mapbox version to at least 6.3.0 using $ReactNativeMapboxGLIOSVersion
-
-#### When can we remove this:
-
-When @react-native-mapbox-gl/maps uses mapbox-ios at least 6.3.0
-
-#### Explanation/Context:
-
-Version 6.3 added support for Xcode 12 and iOS 14. Without this hardcoding we get version 5.7. Let's keep the hardcode, at least until they give us at least that version with the npm package.
-
-To check which version comes with, either remove `$ReactNativeMapboxGLIOSVersion` and after `pod install` check the `Podfile.lock` for version, or look on github https://github.com/react-native-mapbox-gl/maps/blob/main/CHANGELOG.md for versions bundle with an npm version.
-
-Update tried again with mapbox 8.4.0 and getting 5.9 and still need the hard coded requirement, try again next time we update mapbox.
-
-## react-native-mapbox-gl/maps - postinstall script
-
-#### When can we remove this:
-
-When react-native-mapbox adds the events framework as dependency, tried removed in 8.4.0 and was getting a crash on startup do to missing framework.
-
-#### Explanation/Context:
-
-We had issues with our archive becoming invalid and failing to export when we updated mapbox and cocoapods
-
-- mapbox released a beta version that fixed the issue for our setup
-- See issues here: https://github.com/CocoaPods/CocoaPods/issues/10385, https://github.com/react-native-mapbox-gl/maps/issues/1097
-
-## react-native-mapbox-gl/maps - generic types patch
-
-#### When can we remove this:
-
-When react-native-mapbox/maps fixes the type issue here.
-
-#### Explanation/Context:
-
-Typescript complains about some invalid type definitions for generic values. Next time we update mapbox we should try removing the patch, run yarn type-check and if it succeeds you can get rid of the patch.
-
-## react-native-mapbox-gl/maps - MGLGlyphsRasterizationMode
-
-#### When can we remove this:
-
-We should try removing it next time we update our mapbox dependencies (at time of writing 8.4.0). If you remove the plist value and open a map (City guide) and don't see a warning about falling back to a local rasterization you should be good to go.
-
-#### Explanation/Context:
-
-There is an issue here that explains the issue and suggests setting explicity in plist: https://github.com/mapbox/mapbox-gl-native-ios/issues/589
-
-## exporting MockResolverContext (@types/relay-test-utils patch-package)
-
-#### When can we remove this:
-
-Not really needed to be removed, unless it causes problems.
-
-#### Explanation/Context:
-
-We use this type in out code for our tests and the `mockEnvironmentPayload`, so we exported it.
-
 ## Delay modal display after LoadingModal is dismissed
 
 #### When can we remove this:
@@ -134,46 +29,6 @@ Doesn't really need to be removed but can be if view hierarchy issue is fixed in
 #### Explanation/Context:
 
 We have a modal for showing a loading state and a onDismiss call that optionally displays an alert message, on iOS 14 we came across an issue where the alert was not displaying because when onDismiss was called the LoadingModal was still in the view heirarchy. The delay is a workaround.
-
-## react-native-config patch-package
-
-#### When can we remove this:
-
-Now.
-
-#### Explanation/Context:
-
-react-native-config loads the `.env` file by default. We wanted to use `.env.shared` and `.env.ci` instead. We did that by using a patch-package patch, to add our customization.
-
-We can do this better using https://github.com/luggit/react-native-config#ios-1. Take a look at https://artsyproduct.atlassian.net/browse/CX-949.
-
-## @react-navigation/core patch-package
-
-#### When can we remove this:
-
-react-navigation has a bug with nested independent `NavigationContainer` instances. https://github.com/react-navigation/react-navigation/issues/8611
-
-#### Explanation/Context:
-
-Our patch alleviates the issue in our case, but would not work as an upstream PR.
-
-To remove this hack we can do one of two things:
-
-- Stop using nested navigation containers.
-- Fix `@react-navigation/core` properly upstream.
-
-## relay-compiler
-
-#### When can we remove this:
-
-We can remove these hacks when they don't matter anymore. Neither are likely to be fixed by facebook.
-
-#### Explanation/Context:
-
-There are two hacks here:
-
-- We hack the output of the compiler to provide clickable links for error messages. Relay assumes that you put your `__generated__` folder in the root of your project, but we put it in `src`.
-- We make sure that files which do not change are not overwritten. This prevents excessive reloading by metro.
 
 ## react-native-credit-card-input
 
