@@ -4,6 +4,7 @@ import React from "react"
 import { View } from "react-native"
 import { withTheme } from "storybook/decorators"
 import { List } from "storybook/helpers"
+import { Separator } from "./elements"
 import { useSpace } from "./hooks"
 import { SpacingUnitV3 } from "./Theme"
 
@@ -25,9 +26,9 @@ const SpaceLine = ({ space: theSpace }: { space: SpacingUnitV3 }) => {
   )
 }
 
-storiesOf("Theme", module)
+storiesOf("Spaces", module)
   .addDecorator(withTheme)
-  .add("Spaces", () => (
+  .add("SpaceLine", () => (
     <List style={{ marginLeft: 50 }} contentContainerStyle={{ alignItems: "flex-start" }}>
       <SpaceLine space="0.5" />
       <SpaceLine space="1" />
@@ -36,4 +37,15 @@ storiesOf("Theme", module)
       <SpaceLine space="6" />
       <SpaceLine space="12" />
     </List>
+  ))
+  .add("Separator", () => (
+    <>
+      <Separator />
+      <Text color="black">lalala</Text>
+      <Separator />
+      <Text color="black">lalala</Text>
+      <Separator />
+      <Text color="black">lalala</Text>
+      <Separator />
+    </>
   ))

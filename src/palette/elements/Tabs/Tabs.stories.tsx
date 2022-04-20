@@ -35,7 +35,6 @@ storiesOf("Tabs", module)
     const tabs: TabsType = [{ label: "Artist" }, { label: "Artworks", superscript: "Beta" }]
     return <Wrapper tabs={tabs} component={NavigationalTabs} />
   })
-  .addDecorator(withTheme)
   .add("Content Tabs", () => {
     const tabs: TabsType = [
       { label: "Artist" },
