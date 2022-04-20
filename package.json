@@ -1,5 +1,5 @@
 {
-  "name": "@artsy/palette-mobile",
+  "name": "palette-mobile",
   "version": "1.0.0",
   "native-code-version": 1,
   "description": "Artsy mobile palette.",
@@ -10,7 +10,13 @@
   },
   "main": "index.ios.js",
   "scripts": {
-    "start": "STORYBOOK=0 yarn start-servers"
+    "start": "STORYBOOK=0 yarn start-servers",
+    "start-servers": "concurrently --kill-others -n metro,relay 'yarn start-packager-after-relay'"
+    ,
+    "start-packager": "./scripts/start_packager.sh",
+
+    "start-packager-after-relay": "yarn start-packager"
+
   },
   "repository": {
     "type": "git",
