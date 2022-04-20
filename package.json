@@ -1,6 +1,6 @@
 {
   "name": "palette-mobile",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "native-code-version": 1,
   "description": "Artsy mobile palette.",
   "engines": {
@@ -30,11 +30,6 @@
     "url": "https://github.com/patrinoua/eigen-palette/issues"
   },
   "homepage": "https://github.com/patrinoua/eigen-palette#readme",
-  "files": [
-    "index.js",
-    "data",
-    "app"
-  ],
   "dependencies": {
     "@artsy/cohesion": "4.43.0",
     "@artsy/palette-tokens": "2.6.0",
